@@ -1,0 +1,35 @@
+<div class="container">
+		<div class="row">
+			<h1>Products</h1>
+		</div>
+		<div class="row">
+			<%= link_to 'Nuevo producto', new_product_path, class: 'btn btn-primary btn-lg col-md-3 ml-auto text-center' %>
+		</div>
+		<div class="row">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+						<th>category</th>
+						<th></th>
+					</tr>
+				</thead>
+				<% @products.each do |product| %>
+					<tr>
+						<td><%= product.name %></td>
+						<td><%= product.price %></td>
+						<td>
+							<% product.categories.each do |category| %>
+								<%= category.name %>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to 'Editar', edit_product_path(product) %>&nbsp
+							<%= link_to 'Eliminar', '#' %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
